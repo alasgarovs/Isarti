@@ -1,0 +1,397 @@
+<WorkSpaceScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 0
+        spacing: dp(1)
+        md_bg_color: app.theme_cls.bg_dark if app.theme_cls.theme_style == "Dark" else app.theme_cls.bg_light
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: dp(1)
+            
+            MDWidget:
+                size_hint_x: 1
+
+            MDIconButton:
+                icon: 'information'
+                theme_text_color: "Primary"
+                size_hint: None, None
+                icon_size: dp(26)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_release: root.show_info()
+
+            MDIconButton:
+                id: search_toggle
+                icon: 'magnify-close'
+                theme_text_color: "Primary"  
+                size_hint: None, None
+                icon_size: dp(26)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_release: root.toggle_search_availability()
+            
+            MDIconButton:
+                icon: 'microsoft-excel'
+                theme_text_color: "Primary"
+                size_hint: None, None
+                icon_size: dp(26)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_release: root.export_to_excel()
+
+            MDIconButton:
+                icon: 'database-export'
+                theme_text_color: "Primary"
+                size_hint: None, None
+                icon_size: dp(26)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_release: root.export_database()
+            
+            MDIconButton:
+                icon: 'delete-forever'
+                theme_text_color: "Primary"
+                size_hint: None, None
+                icon_size: dp(26)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_release: root.delete_workspace()
+        
+        MDSeparator:
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(1)
+            size_hint_y: None
+            height: self.minimum_height
+            padding: [dp(15), 0, dp(15), 0]
+
+            # Input Barcode
+            MDTextField:
+                font_size: "18sp"
+                id: barcode_input
+                height: 40
+                size_hint: 1, None
+                multiline: False
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_text_validate: root.add_barcode(self.text)
+                input_filter: 'int'
+                focus_behavior: False
+                readonly: False
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(15)
+            size_hint: 1, 1
+            
+            md_bg_color: app.theme_cls.bg_dark if app.theme_cls.theme_style == "Dark" else app.theme_cls.bg_light
+
+            MDBoxLayout:
+                size_hint_y: None
+                height: dp(40)
+                
+                MDLabel:
+                    text: "Barkod"
+                    font_size: "18sp"
+                    bold: True
+                    halign: 'left'
+                    size_hint_x: 0.7
+                MDLabel:
+                    text: "Miqdar"
+                    font_size: "18sp"
+                    bold: True
+                    halign: 'right'
+                    size_hint_x: 0.3
+                    min_width: dp(50)
+
+            MDSeparator:
+
+            ScrollView:
+                do_scroll_x: False
+
+                MDBoxLayout:
+                    id: barcode_container
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: dp(1)
+                    
+                    # 10 static barcode rows
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_0
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_0
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_0.item_id, self.text, root.ids.count_0.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_0
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_1
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_1
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_1.item_id, self.text, root.ids.count_1.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_1
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_2
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_2
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_2.item_id, self.text, root.ids.count_2.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_2
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_3
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_3
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_3.item_id, self.text, root.ids.count_3.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_3
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_4
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_4
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_4.item_id, self.text, root.ids.count_4.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_4
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_5
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_5
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_5.item_id, self.text, root.ids.count_5.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_5
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_6
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_6
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_6.item_id, self.text, root.ids.count_6.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_6
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_7
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_7
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_7.item_id, self.text, root.ids.count_7.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_7
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_8
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_8
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_8.item_id, self.text, root.ids.count_8.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_8
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+                    MDSeparator:
+                    MDBoxLayout:
+                        id: row_9
+                        size_hint_y: None
+                        height: dp(40)
+                        padding: [0, 0, dp(10), 0]
+                        
+                        MDTextButton:
+                            id: code_9
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'left'
+                            size_hint_x: 0.7
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: 'right'
+                            on_release: root.show_edit_dialog(root.ids.code_9.item_id, self.text, root.ids.count_9.text) if self.text else None
+                        
+                        MDLabel:
+                            id: count_9
+                            text: ''
+                            font_size: "18sp"
+                            halign: 'right'
+                            size_hint_x: 0.3
+                            min_width: dp(50)
+
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: self.minimum_height
+            padding: [dp(15), dp(5), dp(25), dp(20)]
+            spacing: dp(15)
+
+            MDLabel:
+                id: total_barcode_count
+                font_size: dp(16)
+                theme_text_color: "Secondary"
+                halign: 'left'       
+            
+            MDLabel:
+                id: total_stock_count
+                text: '0'
+                font_size: dp(16)
+                theme_text_color: "Secondary"
+                halign: 'right'

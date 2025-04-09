@@ -1,0 +1,13 @@
+<RCC>
+  <qresource>
+    <file>../../assets/icons/delete.png</file>
+    <file>../../assets/icons/icon.png</file>
+    <file>../../assets/icons/info.png</file>
+    <file>../../assets/icons/plus.png</file>
+    <file>../../assets/icons/return.png</file>
+    <file>../../assets/icons/stakeholder.png</file>
+    <file>../../assets/icons/user.png</file>
+    <file>../../assets/icons/verified.png</file>
+    <file>../../assets/icons/xls.png</file>
+  </qresource>
+</RCC>

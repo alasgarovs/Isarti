@@ -1,0 +1,39 @@
+<HomeScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(15)
+        md_bg_color: app.theme_cls.bg_dark if app.theme_cls.theme_style == "Dark" else app.theme_cls.bg_light
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(50)
+            padding: [0, dp(20), 0, 0]
+            
+            MDLabel:
+                text: 'Anbarlar'
+                font_size: "24sp"
+                theme_text_color: "Primary"
+                halign: 'center'
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(15)
+            size_hint: 1, 1
+            
+            md_bg_color: app.theme_cls.bg_dark if app.theme_cls.theme_style == "Dark" else app.theme_cls.bg_light
+
+            MDSeparator:
+
+            ScrollView:
+                do_scroll_x: False
+
+                RecycleView:
+                    id: stock_rv
+                    RecycleBoxLayout:
+                        default_size: None, dp(40)
+                        default_size_hint: 1, None
+                        size_hint_y: None
+                        height: self.minimum_height
+                        orientation: 'vertical'

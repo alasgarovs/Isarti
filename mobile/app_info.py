@@ -1,0 +1,5 @@
+AppName = 'İŞARTI'
+AppVersion = 'v1.0.0'
+LastUpdate = '05.04.2025'
+OriginalFilename = 'isarti.apk'
+FileDescription = 'Müxtəlif anbarlarda məhsulların təftişi üçün təyin edilmişdir.'

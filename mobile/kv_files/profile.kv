@@ -1,0 +1,156 @@
+<ProfileScreen>: 
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(10)
+        md_bg_color: app.theme_cls.bg_dark if app.theme_cls.theme_style == "Dark" else app.theme_cls.bg_light
+        
+        # Username
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(60)
+            padding: [dp(0), dp(0), dp(0), dp(20)]
+            spacing: dp(5)   
+
+            MDIcon:
+                icon: "account-circle"
+                theme_text_color: "Primary"
+                font_size: dp(60)
+                size_hint: None, None
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDLabel:
+                id: user_label
+                font_size: "20sp"
+                font_style: "H6"
+                theme_text_color: "Primary"
+                halign: 'left' 
+                size_hint_y: None 
+                width: dp(200)
+                pos_hint: {"center_y": 0.5} 
+                text_size: self.width, None
+                height: dp(20)
+
+        # Horizontal line
+        MDSeparator:
+
+        # Refresh users
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(5)
+
+            MDIcon:
+                icon: "account-multiple"
+                theme_text_color: "Primary"
+                size_hint: None, None
+                size: dp(34), dp(34)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDTextButton:
+                text: "İstifadəçiləri yenilə"
+                theme_text_color: "Primary"
+                font_size: "18sp"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_press:  root.fetch_users()
+
+        # About
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(5)
+
+            MDIcon:
+                icon: "information"
+                theme_text_color: "Primary"
+                size_hint: None, None
+                size: dp(34), dp(34)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDTextButton:
+                text: "Haqqında"
+                theme_text_color: "Primary"
+                font_size: "18sp"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_press: root.navigate_to_page('about')
+                
+        # DB Connection
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(5)
+
+            MDIcon:
+                icon: "cog-transfer-outline"
+                theme_text_color: "Primary"
+                size_hint: None, None
+                size: dp(34), dp(34)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDTextButton:
+                text: "DB bağlantısı"
+                theme_text_color: "Primary"
+                font_size: "18sp"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_press: root.navigate_to_page('connect')
+
+        # Dark/Light Theme Toggle
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(5)
+
+            MDIcon:
+                icon: "theme-light-dark"
+                theme_text_color: "Primary"
+                size_hint: None, None
+                size: dp(34), dp(34)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                spacing: dp(10)
+                
+                MDLabel:
+                    text: "Gecə" if app.theme_cls.theme_style == "Dark" else "Gündüz"
+                    theme_text_color: "Primary"
+                    font_size: "18sp"
+                    size_hint_x: 0.6
+                    
+                MDSwitch:
+                    active: True if app.theme_cls.theme_style == "Dark" else False
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    widget_style: "ios"
+                    on_active: app.toggle_theme()
+
+
+
+        # Spacer
+        MDWidget:
+            size_hint_y: 1
+
+        # LogOut
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(5)
+
+            MDIcon:
+                icon: "logout"
+                theme_text_color: "Primary"
+                size_hint: None, None
+                size: dp(34), dp(34)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDTextButton:
+                text: "Çıxış et"
+                theme_text_color: "Primary"
+                font_size: "18sp"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_press: root.logout()

@@ -1,0 +1,11 @@
+kivy
+kivymd==1.0.2
+pandas
+openpyxl
+sqlalchemy
+pillow
+et_xmlfile
+jdcal
+olefile
+PyQt6
+PySide6

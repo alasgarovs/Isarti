@@ -1,0 +1,83 @@
+<AboutScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: dp(15)
+        spacing: dp(25)
+        md_bg_color: app.theme_cls.bg_dark if app.theme_cls.theme_style == "Dark" else app.theme_cls.bg_light
+
+        # Back to top
+        MDBoxLayout:
+            orientation: 'vertical'
+            height: dp(40)
+            spacing: dp(5)
+            size_hint: 1, None
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                height: dp(40)
+                spacing: dp(5)
+                size_hint: 1, None
+                
+                MDIcon:
+                    icon: "arrow-left"
+                    theme_text_color: "Primary"
+                    size_hint: None, None
+                    size: dp(34), dp(34)
+                    pos_hint: {"center_y": 0.5}
+                    on_touch_down: if self.collide_point(*args[1].pos): root.navigate_to_profile()
+
+                MDLabel:
+                    text: "Haqqında"
+                    theme_text_color: "Primary"
+                    font_size: "18sp"
+                    pos_hint: {"center_y": 0.5}
+                    halign: 'left'
+                    
+            # Horizontal line
+            MDSeparator:
+
+        ScrollView:
+            do_scroll_x: False
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: dp(380)
+                spacing: dp(20)
+                padding: dp(10)
+
+                # App Information
+                MDLabel:
+                    id: app_name_label
+                    theme_text_color: "Primary"
+                    font_size: "30sp"
+                    halign: 'center'
+                    
+
+                MDLabel:
+                    id: app_version_label
+                    theme_text_color: "Primary"
+                    font_size: "18sp"
+                    halign: 'left'
+                    
+
+                MDLabel:
+                    id: last_update_label
+                    theme_text_color: "Primary"
+                    font_size: "18sp"
+                    halign: 'left'
+                    
+
+                MDLabel:
+                    id: file_description_label
+                    theme_text_color: "Primary"
+                    font_size: "18sp"
+                    halign: 'left'
+                    height: self.texture_size[1]
+
+                MDLabel:
+                    id: github_page_label
+                    markup: True
+                    font_size: "18sp"
+                    halign: 'left'
+                    on_ref_press: root.open_url("https://github.com/alasgarovs/Isarti/releases")

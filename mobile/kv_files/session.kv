@@ -1,0 +1,67 @@
+<SessionScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(20)
+        md_bg_color: app.theme_cls.bg_dark if app.theme_cls.theme_style == "Dark" else app.theme_cls.bg_light
+
+        ScrollView:
+            do_scroll_x: False
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: dp(350)
+                spacing: dp(15)
+                padding: dp(8)
+
+                MDLabel:
+                    id: workspace_user
+                    font_size: "24sp"
+                    theme_text_color: "Primary"
+                    halign: 'center'
+
+                MDLabel:
+                    text: 'Yeni anbar yaradaq!'
+                    font_size: "18sp"
+                    theme_text_color: "Secondary"
+                    halign: 'center'
+                    
+                MDTextField:
+                    font_size: "18sp"
+                    id: workspace_name
+                    hint_text: "Anbar adı"
+                    pos_hint: {"center_x": 0.5}
+                    max_text_length: 20
+                    multiline: False
+                    
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(50)
+                    pos_hint: {"center_x": 0.5}
+                    spacing: dp(5)
+                    
+                    MDTextField:
+                        font_size: "18sp"
+                        id: workspace_date
+                        hint_text: "Tarix"
+                        max_text_length: 10
+                        multiline: False
+                        readonly: True
+                        size_hint_x: 0.9
+                        pos_hint: {"center_x": 0.5}
+                    
+                    MDIconButton:
+                        icon_size: dp(28)   
+                        icon: "calendar"
+                        pos_hint: {"center_y": 0.5}
+                        on_release: root.show_date_picker()
+                            
+                MDRaisedButton:
+                    text: "Təsdiqlə"
+                    font_size: "18sp"
+                    size_hint: None, None
+                    size: dp(100), dp(40)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    on_press: root.create_session()

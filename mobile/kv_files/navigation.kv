@@ -1,0 +1,50 @@
+<NavigationBar>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: dp(50)
+    padding: dp(0)
+    spacing: dp(10)
+    
+    MDBoxLayout:
+        orientation: 'horizontal'
+        spacing: dp(30)  
+        size_hint: 1, None
+        height: dp(50)
+        padding: [dp(15), dp(25), dp(15), dp(15)] 
+        canvas.before:
+            Color:
+                rgba: app.theme_cls.bg_dark if app.theme_cls.theme_style == "Dark" else app.theme_cls.bg_light
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            # Top line
+            Color:
+                rgba: rgba("#3A3A3A") if app.theme_cls.theme_style == "Dark" else rgba("#E0E0E0")
+            Rectangle:
+                pos: self.pos[0], self.pos[1] + self.height - dp(1)
+                size: self.width, dp(1)
+
+        MDIconButton:
+            id: nav_box
+            icon: 'table'
+            theme_text_color: "Primary"
+            size_hint: 1, None
+            icon_size: dp(36)
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_press: root.change_screen('home')
+
+        MDIconButton:
+            icon: 'plus-box-multiple'
+            theme_text_color: "Primary"
+            size_hint: 1, None
+            icon_size: dp(36)
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_press: root.change_screen('session')
+
+        MDIconButton:
+            icon: 'account-circle'
+            theme_text_color: "Primary"
+            size_hint: 1, None
+            icon_size: dp(36)
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_press: root.change_screen('profile')

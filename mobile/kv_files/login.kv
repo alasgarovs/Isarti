@@ -1,0 +1,60 @@
+<LoginScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(40)
+        md_bg_color: app.theme_cls.bg_dark if app.theme_cls.theme_style == "Dark" else app.theme_cls.bg_light
+        
+        ScrollView:
+            do_scroll_x: False
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: dp(350)
+                spacing: dp(15)
+                padding: dp(8)
+                canvas.before:
+
+                MDLabel:
+                    text: 'İŞARTI'
+                    font_size: dp(32)
+                    theme_text_color: "Primary"
+                    halign: 'center'
+                
+                MDLabel:
+                    text: 'Davam etmək üçün giriş edin'
+                    font_size: "18sp"
+                    theme_text_color: "Secondary"
+                    halign: 'center'
+                
+                MDTextField:
+                    font_size: "18sp"
+                    id: username
+                    hint_text: "İstifadəçi adı"
+                    helper_text: "max 15 - min 3"
+                    helper_text_mode: "on_error"
+                    icon_right: "account"
+                    pos_hint: {"center_x": 0.5}
+                    max_text_length: 15
+                    multiline: False
+                    on_text: root.filter_username(self.text)
+                    
+                MDTextField:
+                    font_size: "18sp"
+                    id: password
+                    hint_text: "Şifrə"
+                    helper_text: "max 10 - min 4"
+                    helper_text_mode: "on_error"
+                    icon_right: "key"
+                    pos_hint: {"center_x": 0.5}
+                    max_text_length: 10
+                    multiline: False
+            
+                MDRaisedButton:
+                    padding: dp(5)
+                    text: "Giriş et"
+                    font_size: "18sp"
+                    size_hint_x: 0.7
+                    pos_hint: {"center_x": 0.5}
+                    on_press: root.login()
